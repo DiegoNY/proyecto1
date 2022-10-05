@@ -4,8 +4,8 @@
     include_once 'model/coneccion.php';
 
     $sentencia = $bd -> query("select * from usuarios");
-    $persona = $sentencia->fetchAll(PDO::FETCH_OBJ);
-    // print_r($persona);
+    $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    // print_r($usuarios);
 ?>
 
 <div class="container mt-5">
@@ -28,29 +28,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <!-- Recorriendo usuarios para mostrarlos  -->
+                                <?php
+                                    foreach($usuarios as $data){
+                                        
+                                ?>
                                 <tr class="">
-                                    <td>#</td>
-                                    <td scope="row">Diego</td>
-                                    <td>Nalvarte Yomona</td>
-                                    <td>nalr@gmail.com</td>
+                                    <td><?php echo $data->id;?></td>
+                                    <td scope="row"><?php echo $data->nombre;?></td>
+                                    <td><?php echo $data->apellido;?></td>
+                                    <td><?php echo $data->correo;?></td>
                                     <td>Editar</td>
                                     <td>Eliminar</td>
                                 </tr>
-                                <tr class="">
-                                    <td>#</td>
-                                    <td scope="row">Diego</td>
-                                    <td>Nalvarte Yomona</td>
-                                    <td>nalr@gmail.com</td>
-                                    <td>Editar</td>
-                                    <td>Eliminar</td>
-                                </tr>
-                                <tr class="">
-                                    <td>#</td>
-                                    <td scope="row">Diego</td>
-                                    <td>Nalvarte Yomona</td>
-                                    <td>nalr@gmail.com</td>
-                                    <td>Editar</td>
-                                    <td>Eliminar</td>
+                               <?php 
+                                }
+                               ?>
+                               <!-- fin de recorrido valores mostrados-->
                                 </tr>
                             </tbody>
                         </table>
@@ -91,7 +85,6 @@
             </div>
         </div>
     </div>
-    
 </div>
 
 <?php include 'templates/footer.php' ?>
