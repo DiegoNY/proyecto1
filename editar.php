@@ -12,7 +12,7 @@ $codigo = $_GET['codigo'];
 $sentencia = $bd->prepare("select * from usuarios where id = ? ;");
 $sentencia->execute([$codigo]);
 $usuario = $sentencia->fetch(PDO::FETCH_OBJ);
-// print_r($usuario);
+print_r($usuario);
 ?>
 
 <div class="container mt-5">
