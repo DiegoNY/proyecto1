@@ -63,23 +63,23 @@
                     <label class="form-label">
                         Nombre : 
                     </label>
-                    <input type="text" class="form-control" name="txtNombre" autofocus>
+                    <input type="text" class="form-control" name="txtNombre" autofocus required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">
                         Apellidos : 
                     </label>
-                    <input type="text" class="form-control" name="txtApellidos" autofocus>
+                    <input type="text" class="form-control" name="txtApellidos" autofocus required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">
                         Correo : 
                     </label>
-                    <input type="text" class="form-control" name="txtCorreo" autofocus>
+                    <input type="text" class="form-control" name="txtCorreo"  autofocus required>
                 </div>
                 <div class="d-grid">
                     <input type="hidden" name="oculto"value="1">
-                    <input type="submit" class="btn btn-primary" value="Registrar">
+                    <input type="submit" class="btn btn-primary" value="Registrar" action>
                 </div>
                 </form>
             </div>
