@@ -43,7 +43,7 @@ $usuario = $sentencia->fetch(PDO::FETCH_OBJ);
                     </div>
                     <div class="d-grid">
                         <input type="hidden" name="codigo" value="<?php echo $usuario->id?>">
-                        <input type="submit" class="btn btn-primary" value="Registrar" action>
+                        <input type="submit" class="btn btn-primary" value="Editar" action>
                     </div>
                 </form>
             </div>

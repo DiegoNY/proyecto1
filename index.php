@@ -28,7 +28,7 @@ $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
             //alerta usuarios registrados 
             if(isset($_GET['mensaje'] ) and $_GET['mensaje'] == 'registrado'){
             ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Usuario Ingresado </strong> ✔
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -99,7 +99,7 @@ $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
                                         <td><?php echo $data->apellido; ?></td>
                                         <td><?php echo $data->correo; ?></td>
                                         <td "><a class="text-succes" href="editar.php?codigo=<?php echo $data->id;?>"><i class="bi bi-pen"></i></a></td>
-                                        <td ><a class="text-warning" href="eliminarUsuario.php?codigo=<?php echo $data->id;?>"><i class="bi bi-trash"></i></a></td>
+                                        <td ><a onclick="return confirm('Estas seguro de eliminarlo ?');"   class="text-danger" href="eliminarUsuario.php?codigo=<?php echo $data->id;?>"><i class="bi bi-trash"></i></a></td>
                                     </tr>
                                 <?php
                                 }
