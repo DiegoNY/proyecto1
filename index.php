@@ -1,19 +1,46 @@
 <?php include 'templates/header.php' ?>
 
-<?php 
-    include_once 'model/coneccion.php';
+<?php
+include_once 'model/coneccion.php';
 
-    $sentencia = $bd -> query("select * from usuarios");
-    $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
-    // print_r($usuarios);
+$sentencia = $bd->query("select * from usuarios");
+$usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+// print_r($usuarios);
 ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7">
+            <!--Alerta sin registros completos-->
+            <?php
+            //si en get tiene la variable mensaje y esta contiene falta se mostrara la alerta si no no 
+            if(isset($_GET['mensaje'] ) and $_GET['mensaje'] == 'falta'){
+            ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Faltan Datos</strong> Completa todos los campos 😀
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            }
+            ?>
+            <!-- alerta 2 -->
+            <?php
+            //alerta usuarios registrados 
+            if(isset($_GET['mensaje'] ) and $_GET['mensaje'] == 'registrado'){
+            ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Usuario Ingresado </strong> ✔
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            }
+            ?>
+
+            <!--Fin de Alerta-->
+
             <div class="card">
                 <div class="card-header">
-                    Usarios : 
+                    Usarios :
                 </div>
                 <div class="p-4">
                     <div class="table-responsive align-middle">
@@ -24,32 +51,32 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Apellidos</th>
                                     <th scope="col">Correo</th>
-                                    <th scope="col" colspan="2" >Opciones</th>
+                                    <th scope="col" colspan="2">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Recorriendo usuarios para mostrarlos  -->
                                 <?php
-                                    foreach($usuarios as $data){
-                                        
+                                foreach ($usuarios as $data) {
+
                                 ?>
-                                <tr class="">
-                                    <td><?php echo $data->id;?></td>
-                                    <td scope="row"><?php echo $data->nombre;?></td>
-                                    <td><?php echo $data->apellido;?></td>
-                                    <td><?php echo $data->correo;?></td>
-                                    <td>Editar</td>
-                                    <td>Eliminar</td>
-                                </tr>
-                               <?php 
+                                    <tr class="">
+                                        <td><?php echo $data->id; ?></td>
+                                        <td scope="row"><?php echo $data->nombre; ?></td>
+                                        <td><?php echo $data->apellido; ?></td>
+                                        <td><?php echo $data->correo; ?></td>
+                                        <td>Editar</td>
+                                        <td>Eliminar</td>
+                                    </tr>
+                                <?php
                                 }
-                               ?>
-                               <!-- fin de recorrido valores mostrados-->
+                                ?>
+                                <!-- fin de recorrido valores mostrados-->
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -59,28 +86,28 @@
                     Ingresa usuario :
                 </div>
                 <form action="registrarUsuario.php" method="POST" class="p-4">
-                <div class="mb-3">
-                    <label class="form-label">
-                        Nombre : 
-                    </label>
-                    <input type="text" class="form-control" name="txtNombre" autofocus required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">
-                        Apellidos : 
-                    </label>
-                    <input type="text" class="form-control" name="txtApellidos" autofocus required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">
-                        Correo : 
-                    </label>
-                    <input type="text" class="form-control" name="txtCorreo"  autofocus required>
-                </div>
-                <div class="d-grid">
-                    <input type="hidden" name="oculto"value="1">
-                    <input type="submit" class="btn btn-primary" value="Registrar" action>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Nombre :
+                        </label>
+                        <input type="text" class="form-control" name="txtNombre" autofocus >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Apellidos :
+                        </label>
+                        <input type="text" class="form-control" name="txtApellidos" autofocus >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Correo :
+                        </label>
+                        <input type="text" class="form-control" name="txtCorreo" autofocus >
+                    </div>
+                    <div class="d-grid">
+                        <input type="hidden" name="oculto" value="1">
+                        <input type="submit" class="btn btn-primary" value="Registrar" action>
+                    </div>
                 </form>
             </div>
         </div>
