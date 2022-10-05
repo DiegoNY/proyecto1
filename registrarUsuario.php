@@ -9,7 +9,7 @@ if(empty($_POST["oculto"]) || empty($_POST["txtNombre"]) || empty($_POST["txtApe
 /** Registrando los Nuevos Usuarios*/
 
 //obteniendo datos
-include_once 'model/coneccion.php';
+include_once 'model/conexion.php';
 $nombre = $_POST["txtNombre"];
 $apellidos = $_POST["txtApellidos"];
 $correo = $_POST["txtCorreo"];
