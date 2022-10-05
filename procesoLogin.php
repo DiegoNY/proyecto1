@@ -1,6 +1,6 @@
 <?php
-// print_r($_POST);
-if(empty($_POST['txtUsuario'])){
+print_r($_POST);
+if(empty($_POST['txtUsuario'])|| empty($_POST['txtContraseña'])){
     echo 'error';   
 }
 
@@ -8,13 +8,17 @@ include_once 'model/conexion.php';
 $usuario = $_POST['txtUsuario'];
 $contraseña = $_POST['txtContraseña'];
 
-$sentencia = $bd->prepare("SELECT * FROM usuarios where nombre = ?,correo =?;");
+//consultas creo que es una mala practica tener el codigo asi 🤔
+$sentencia = $bd->prepare("SELECT * FROM usuarios where nombre = ? and correo =?;");
 
-$resultado = $sentencia->execute($usuario,$contraseña);
+$resultado = $sentencia->execute([$usuario,$contraseña]);
 
-if($resultado === TRUE){
-    header('Location: login.php?mensaje=ingresaste');
+
+// si las filas fueron afectadas se puede ingresar 
+if( $sentencia->rowCount() >= 1){
+    header('Location: index.php?mensaje=ingresaste');
 }else{
-    header('Location: lgin.php?mensaje=noIngresaste');
+    header('Location: login.php?mensaje=noIngresaste'); 
+    exit();
 }
 ?>

@@ -21,8 +21,8 @@
                         <input type="text" class="form-control" name="txtContraseña" autofocus>
                     </div>
                     <div class="d-grid">
-                        <input type="hidden" name="oculto" value="1">
-                        <input type="submit" class="btn btn-primary" value="Registrar" action>
+                        <input type="hidden" name="login" >
+                        <input type="submit" class="btn btn-primary" value="Ingresar" action>
                     </div>
                 </form>
             </div>
