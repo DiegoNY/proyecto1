@@ -1,5 +1,5 @@
 <?php
-print_r($_POST);
+// print_r($_POST);
 if(empty($_POST['txtUsuario'])|| empty($_POST['txtContraseña'])){
     echo 'error';   
 }
